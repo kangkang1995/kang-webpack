@@ -1,6 +1,6 @@
 > 自己试验配置的
 支持一下配置
-1. 图片
+1. 图片/视频/字体
 2. css/scss/less
 3. excel/word
 4. json
