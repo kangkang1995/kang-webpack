@@ -12,7 +12,6 @@
   "devDependencies": {
     "file-loader": "^6.1.0",
     "html-webpack-plugin": "^4.4.1",
-    "vue-loader": "^15.9.3",
     "vue-template-compiler": "^2.6.12",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
@@ -49,6 +48,7 @@
     "style-loader": "^1.2.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^4.1.0",
-    "vue": "^2.6.12"
+    "vue": "^2.6.12",
+    "vue-loader": "^15.9.3"
   }
 }
