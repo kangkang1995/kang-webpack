@@ -79,6 +79,7 @@ module.exports = {
             options: {
               // limit: 5000,
               // 分离图片至images文件夹
+              esModule: false,
               name: "./images/[name].[ext]?[hash]",
               // publicPath:"./dist/assets/images"
             }
@@ -125,7 +126,7 @@ module.exports = {
   ],// 插件
   resolve: {
     // 省略后缀
-    extensions: ['.js', '.jsx', '.tsx', '.css', '.scss', '.vue']
+    extensions: ['.js','.jsx','.vue','.tsx','.css','.scss'],
   },
   optimization: {
     splitChunks: {

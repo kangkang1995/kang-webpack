@@ -6,6 +6,7 @@
         <circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red" />
       </svg> 
     </div>
+    <button @click="test1">节流</button>
     <div>
       改变字体fgfdg <br/>
       东方军事打击发生的纠纷速度加快分解开始加快进度附件是打开即可即可
@@ -21,9 +22,14 @@
         33
       </div>
     </div>
+
+    <div>
+      <img src="../../assets/images/player_02.png" alt="">
+    </div>
+
     <!-- <div>
       <img :src="player_02" alt="">
-    </div>
+    </div> -->
     <div>
       <img :src="banner06" alt="">
     </div>
@@ -32,7 +38,7 @@
     </div>
     <div class="bg01">
 
-    </div> -->
+    </div>
     <div>
       <audio controls>
         <source :src="horseMp3" type="audio/mpeg">
@@ -68,6 +74,31 @@ import horseMp3 from "../../assets/video/horse.mp3";
 import movieMp4 from "../../assets/video/movie.mp4";
 import movieOgg from "../../assets/video/movie.ogg";
 // import less1 from './less1.less';
+const _throttle = function(funct,time=2500){
+  let status;
+  return function(){
+    if(!status){
+      status = setTimeout(function(){
+        status = null;
+        funct.apply(this,arguments)
+      },time)
+    }
+  }
+}
+// 抖动
+const _debounce = function(funct,time=2500){
+  let status;
+  return function(){
+    
+    clearTimeout(status);
+
+    status = setTimeout(function(){
+      status = null;
+      funct.apply(this,arguments)
+    },time)
+  }
+}
+
 export default {
   name: 'app',
   data:function(){
@@ -82,11 +113,19 @@ export default {
   },
   mounted(){
     console.log(testJosn,1111)
+  },
+  methods:{
+    test1:_debounce(
+      function(a=1,b=2){
+        console.log('11111')
+      }
+    ),
+    
   }
 }
 </script>
 
 <style scoped lang="scss">
-  // @import "./style1.scss";
+  @import "./style1.scss";
   // @import "./index.css";
 </style>

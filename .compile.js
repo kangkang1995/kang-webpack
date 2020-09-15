@@ -12,7 +12,7 @@ module.exports = {
   server: {
     alias: {
       "@": path.resolve(__dirname, 'src'),
-      "env": path.resolve(__dirname, 'env/beta.js')
+      "env": path.resolve(__dirname, 'env/beta.js'),
     }
   },
   build: {
