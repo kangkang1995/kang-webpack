@@ -86,7 +86,7 @@ export default {
 }
 </script>
 
-<style scoped>
-@import "./style1.scss";
-/* @import "./index.css" */
+<style scoped lang="scss">
+  // @import "./style1.scss";
+  // @import "./index.css";
 </style>

@@ -2,7 +2,7 @@ const path = require('path');
 module.exports = {
   htmlChunk: {
     "$all": {
-      title: "电竞圈文档查询后台",
+      title: "kangkang",
       headChunk: [`<meta charset="utf-8">`,
         `<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>`,
         `<meta name="format-detection" content="email=no">`,

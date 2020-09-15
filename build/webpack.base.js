@@ -3,11 +3,12 @@ const webpack = require('webpack');
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const entry = require('../utils/entry');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './src/modules/index', //入口
+  // entry: './src/modules/index', //入口
+  entry,
   output: {
     path: path.resolve(__dirname, '../dist'), // 输出的路径
     filename: '[name].bundle.js'  // 打包后文件
@@ -117,16 +118,12 @@ module.exports = {
     new webpack.HashedModuleIdsPlugin(),
     new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../index.html'),
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: path.resolve(__dirname, '../index.html'),
+    // }),
     
   ],// 插件
   resolve: {
-    // alias: {
-    //     "@": path.resolve(__dirname, '../src'),
-    //     env:path.resolve(__dirname,'../env/beta.js')
-    // },
     // 省略后缀
     extensions: ['.js', '.jsx', '.tsx', '.css', '.scss', '.vue']
   },

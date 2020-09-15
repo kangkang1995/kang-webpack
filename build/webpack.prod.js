@@ -3,40 +3,39 @@ const path = require('path');
 const merge = require('webpack-merge');
 const common = require('./webpack.base.js');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const {buildConfig,htmlChunk} = require('../.compile');
 // 分离CSS插件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = merge(common, {
   module: {
     rules:[
-      {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          {
-            loader:MiniCssExtractPlugin.loader,
-            options:{
-              publicPath:'../',
-            }
-          },
-          'css-loader',
-          'postcss-loader',
-          'sass-loader',
-        ],
-      },
-      {
-        test: /\.less$/,
-        use: [
-          {
-            loader:MiniCssExtractPlugin.loader,
-            options:{
-              publicPath:'../',
-            }
-          },
-          'css-loader',
-          'postcss-loader',
-          'less-loader',
-        ],
-      },
+      // {
+      //   test: /\.(sa|sc|c)ss$/,
+      //   use: [
+      //     {
+      //       loader:MiniCssExtractPlugin.loader,
+      //       options:{
+      //         publicPath:'../',
+      //       }
+      //     },
+      //     'css-loader',
+      //     'postcss-loader',
+      //     'sass-loader',
+      //   ],
+      // },
+      // {
+      //   test: /\.less$/,
+      //   use: [
+      //     {
+      //       loader:MiniCssExtractPlugin.loader,
+      //       options:{
+      //         publicPath:'../',
+      //       }
+      //     },
+      //     'css-loader',
+      //     'postcss-loader',
+      //     'less-loader',
+      //   ],
+      // },
     ]
   },
   plugins: [],
