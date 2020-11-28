@@ -6,12 +6,12 @@ let webpackConfig = require("../build/webpack.dev.js");
 const { server: serverConfig, htmlChunk, favicon } = require("../.compile");
 module.exports = (args) => {
   const { port } = args;
-
   Object.values(webpackConfig.entry).map((item) => {
     item.push(`webpack-dev-server/client?http://localhost:${port}/`);
     item.push(`webpack/hot/only-dev-server`);
     item.push(`react-hot-loader/patch`);
   });
+  
   Object.keys(webpackConfig.entry).map((name) => {
     let htmlConfig = {
       filename: name + ".html",
@@ -20,6 +20,7 @@ module.exports = (args) => {
       headChunk: [],
       scriptChunk: [],
     };
+    
     if (htmlChunk) {
       let hc = htmlChunk["$all"] || {};
       if (hc.filename) htmlConfig.filename = hc.filename;

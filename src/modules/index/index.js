@@ -1,11 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { hot } from 'react-hot-loader/root';
+// import { hot } from 'react-hot-loader/root';
 const root = document.getElementById('app');
 import App from "./index.jsx";
-
+import HookTest from "./hookTest.jsx";
 const load = () => render((
-    <App />
+    <>
+        <HookTest/>
+        <App/>
+    </>
 ), root);
-
-hot(load());
+load()
+// hot(load());

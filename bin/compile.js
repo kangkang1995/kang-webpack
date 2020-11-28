@@ -11,8 +11,8 @@ yargs
         default: dev.port
       })
   },(argv)=>{
+    // console.log(argv,'************************');
     start(argv);
-    // console.log(argv);
   })
   .command('build [type]', 'Build a project in development mode',(yargs)=>{
     yargs
