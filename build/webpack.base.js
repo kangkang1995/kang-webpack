@@ -16,8 +16,14 @@ module.exports = {
   },
   module: {
     rules: [
+      // ts-loader 不支持热更新
+      // {
+      //   test: /\.(tsx|ts)$/,
+      //   use: 'ts-loader',
+      //   exclude: /node_modules/,
+      // },
       {
-        test: /\.(js|jsx|tsx)$/,
+        test: /\.(js|jsx|tsx|ts)$/,
         use: [
           {
             loader: "babel-loader",

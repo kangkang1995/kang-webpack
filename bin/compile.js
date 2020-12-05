@@ -2,13 +2,12 @@
 const yargs = require('yargs');
 const start = require('./start');
 const build = require('./build');
-const {dev} = require('../config');
 yargs
   .command('start [port]', 'Build a project in development mode',(yargs)=>{
     yargs
       .positional('port',{
         describe:'port to bind on',
-        default: dev.port
+        default: 8080
       })
   },(argv)=>{
     // console.log(argv,'************************');

@@ -4,27 +4,28 @@ const path = require("path");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const webpack = require("webpack");
 const ReactRefreshPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const ForkTsCheckerNotifierWebpackPlugin = require("fork-ts-checker-notifier-webpack-plugin");
+
 module.exports = merge(common, {
   devtool: "inline-source-map", //追踪到错误和警告在源代码中的原始位置
   module: {
-    rules:[
+    rules: [
       {
-        test: /\.(js|jsx|tsx)$/,
+        test: /\.(js|jsx|tsx|ts)$/,
         use: [
           {
             loader: "babel-loader",
             options: {
               cacheDirectory: true,
-              "plugins": [
-                [require.resolve('react-refresh/babel')],
-              ],
+              plugins: [[require.resolve("react-refresh/babel")]],
             },
           },
           // ...lazy
         ],
         exclude: /node_modules/,
       },
-    ]
+    ],
   },
   // devServer: {
   //   contentBase: '../dist',
@@ -82,5 +83,17 @@ module.exports = merge(common, {
     new webpack.NamedModulesPlugin(),
     // 官方热更新
     new ReactRefreshPlugin(),
+    new ForkTsCheckerWebpackPlugin({
+      // 将async设为false，可以阻止Webpack的emit以等待类型检查器/linter，并向Webpack的编译添加错误。
+      async: false,
+    }),
+    // 将TypeScript类型检查错误以弹框提示
+    // 如果fork-ts-checker-webpack-plugin的async为false时可以不用
+    // 否则建议使用，以方便发现错误
+    new ForkTsCheckerNotifierWebpackPlugin({
+      title: "TypeScript",
+      excludeWarnings: true,
+      skipSuccessful: true,
+    }),
   ],
 });

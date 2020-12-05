@@ -1,5 +1,4 @@
-import React from "react";
-
+import * as React from 'react';
 import player_02 from "../../assets/images/player_02.png";
 import banner06 from "../../assets/images/banner06.jpg";
 import gif11111 from "../../assets/images/11111.gif";
@@ -16,7 +15,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div id="app">
-        <div>我是react class11</div>
+        <div>我是react class556995</div>
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
           <circle
             cx="100"

@@ -13,5 +13,5 @@ function getEntries(globPath) {
 }
 
 module.exports = getEntries(
-  path.resolve(__dirname, "../src/modules/*/index.js")
+  path.resolve(__dirname, "../src/modules/*/index.tsx")
 );

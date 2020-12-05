@@ -1,9 +1,10 @@
-import React from 'react';
+
+import * as React from 'react';
 import { render } from 'react-dom';
 // import { hot } from 'react-hot-loader/root';
 const root = document.getElementById('app');
-import App from "./index.jsx";
-import HookTest from "./hookTest.jsx";
+import App from "./app";
+import HookTest from "./hookTest";
 const load = () => render((
     <>
         <HookTest/>
