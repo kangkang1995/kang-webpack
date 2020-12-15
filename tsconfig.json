@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "outDir": "build",
     "target": "es5",
     "jsx": "react",
     "lib": ["dom", "es6", "es2015.promise", "es2017"],
