@@ -18,7 +18,7 @@ module.exports = merge(common, {
             loader: "babel-loader",
             options: {
               cacheDirectory: true,
-              plugins: [[require.resolve("react-refresh/babel")]],
+              plugins: [require.resolve("react-refresh/babel")],
             },
           },
           // ...lazy

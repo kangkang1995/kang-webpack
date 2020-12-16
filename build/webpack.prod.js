@@ -5,8 +5,6 @@ const common = require("./webpack.base.js");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 // 分离CSS插件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-//静态资源输出,将src目录下的assets文件夹复制到dist目录下
-const CopyPlugin = require("copy-webpack-plugin");
 module.exports = merge(common, {
   module: {
     rules: [
@@ -93,18 +91,6 @@ module.exports = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: "./css/[name].[hash].css",
-    }),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, "../static"),
-          to: path.resolve(__dirname, "../dist"),
-        },
-        {
-          from: path.resolve(__dirname, "../public"),
-          to: path.resolve(__dirname, "../dist"),
-        },
-      ],
     }),
   ],
   resolve: {

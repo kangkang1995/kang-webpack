@@ -11,7 +11,7 @@
     "moduleResolution": "node",
     "paths": {
       "@/*": ["src/*"],
-      "lazy!*": ["src/modules/index/*"]
+      "lazy!*": ["src/modules/index/*"],
     }
   },
   "include":["src"],

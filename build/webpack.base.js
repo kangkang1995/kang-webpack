@@ -2,9 +2,11 @@
 const webpack = require("webpack");
 const path = require("path");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { customCopyPlugin } = require("../.compile");
+//静态资源输出,将src目录下的assets文件夹复制到dist目录下
+const CopyPlugin = require("copy-webpack-plugin");
 const entry = require("../utils/entry");
 
 module.exports = {
@@ -73,26 +75,26 @@ module.exports = {
                         },
                     },
                     {
-                        loader: 'image-webpack-loader',
+                        loader: "image-webpack-loader",
                         options: {
                             //   bypassOnDebug: true,
                             mozjpeg: {
                                 progressive: true,
-                                quality: 65
+                                quality: 65,
                             },
                             optipng: {
                                 enabled: false,
                             },
                             pngquant: {
                                 quality: [0.65, 0.9],
-                                speed: 4
+                                speed: 4,
                             },
                             gifsicle: {
                                 interlaced: false,
-                            },// the webp option will enable WEBP
+                            }, // the webp option will enable WEBP
                             webp: {
-                                quality: 75
-                            }
+                                quality: 75,
+                            },
                         },
                     },
                 ],
@@ -131,21 +133,22 @@ module.exports = {
         new webpack.HashedModuleIdsPlugin(),
         new VueLoaderPlugin(),
         new ProgressBarPlugin(),
-        // new HtmlWebpackPlugin({
-        //   template: path.resolve(__dirname, '../index.html'),
-        // }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, "../static"),
+                    to: path.resolve(__dirname, "../dist"),
+                },
+                {
+                    from: path.resolve(__dirname, "../public"),
+                    to: path.resolve(__dirname, "../dist"),
+                },
+                ...customCopyPlugin,
+            ],
+        }),
     ], // 插件
     resolve: {
         // 省略后缀
-        extensions: [
-            ".tsx",
-            ".ts",
-            ".js",
-            ".jsx",
-            ".vue",
-            ".css",
-            ".scss",
-            ".less",
-        ],
+        extensions: [".tsx", ".ts", ".js", ".jsx", ".vue", ".css", ".scss", ".less"],
     },
 };

@@ -1,20 +1,26 @@
-import React, {useEffect} from "react";
-const merge = require("webpack-merge");
-
+import React, { useEffect } from "react";
+// const merge = require("webpack-merge");
+// import {baseUrl} from "env";
+import doc11 from "@/assets/others/doc11.doc";
 const HookTest = () => {
-  var a = 1;
-  const test = () =>{
-    let b = {
-      a:1,
-    }
-    return b?.a === 1?<div>1111</div>:<div>2222</div>
-  }
-  return (
-      <div>
-        <div>我是react hook99999</div>
-      <div>{test()}</div>
-      </div>
-  );
+    // var a = 1;
+    const test = () => {
+        let b = {
+            a: 1,
+        };
+
+        return b?.a === 1 ? <div>1111</div> : <div>2222</div>;
+    };
+    const download = () => {
+        // console.log(baseUrl,'baseUrl')
+        // window.open(doc11);
+    };
+    return (
+        <div>
+            <div onClick={download}>我是react hook55555</div>
+            <div>{test()}</div>
+        </div>
+    );
 };
 
-export default HookTest
+export default HookTest;
