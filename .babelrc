@@ -22,6 +22,7 @@
         "corejs": 3
       }
     ],
-    ["@babel/plugin-transform-typescript", { "allowNamespaces": true }]
+    ["@babel/plugin-transform-typescript", { "allowNamespaces": true }],
+    ["@babel/plugin-syntax-dynamic-import"]
   ]
 }
