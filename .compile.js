@@ -1,5 +1,7 @@
 const path = require('path');
 module.exports = {
+  // 自定义 入口文件
+  customEntry:"",
   htmlChunk: {
     "$all": {
       title: "kangkang",

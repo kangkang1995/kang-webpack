@@ -13,3 +13,15 @@
 
 ---
 待完善中
+
+#### 常见错误
+
+#### 1.image-webpack-loader
+
+需要用 cnpm 装
+
+```javascript
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+cnpm i image-webpack-loader
+```

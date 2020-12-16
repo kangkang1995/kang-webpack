@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
+const merge = require("webpack-merge");
 
 const HookTest = () => {
+  var a = 1;
   const test = () =>{
     let b = {
       a:1,
