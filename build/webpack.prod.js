@@ -8,34 +8,34 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = merge(common, {
   module: {
     rules: [
-      // {
-      //   test: /\.(sa|sc|c)ss$/,
-      //   use: [
-      //     {
-      //       loader:MiniCssExtractPlugin.loader,
-      //       options:{
-      //         publicPath:'../',
-      //       }
-      //     },
-      //     'css-loader',
-      //     'postcss-loader',
-      //     'sass-loader',
-      //   ],
-      // },
-      // {
-      //   test: /\.less$/,
-      //   use: [
-      //     {
-      //       loader:MiniCssExtractPlugin.loader,
-      //       options:{
-      //         publicPath:'../',
-      //       }
-      //     },
-      //     'css-loader',
-      //     'postcss-loader',
-      //     'less-loader',
-      //   ],
-      // },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          {
+            loader:MiniCssExtractPlugin.loader,
+            options:{
+              publicPath:'../',
+            }
+          },
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader:MiniCssExtractPlugin.loader,
+            options:{
+              publicPath:'../',
+            }
+          },
+          'css-loader',
+          'postcss-loader',
+          'less-loader',
+        ],
+      },
     ],
   },
   plugins: [],
@@ -91,6 +91,7 @@ module.exports = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: "./css/[name].[hash].css",
+      chunkFilename: './css/[id].[hash].css'
     }),
   ],
   resolve: {

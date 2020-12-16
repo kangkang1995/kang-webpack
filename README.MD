@@ -19,7 +19,7 @@
 
 ### 常见错误
 
-#### 1.image-webpack-loader
+#### 1.image-webpack-loader  一般出现单词类似 图片的这种报错，就重新这样装一下
 
 需要用 cnpm 装
 

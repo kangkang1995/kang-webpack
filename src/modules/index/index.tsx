@@ -7,8 +7,8 @@ import App from "./app";
 import HookTest from "./hookTest";
 const load = () => render((
     <>
-        <HookTest/>
-        {/* <App/> */}
+        {/* <HookTest/> */}
+        <App/>
     </>
 ), root);
 load()
