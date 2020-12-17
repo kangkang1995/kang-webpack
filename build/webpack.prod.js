@@ -77,12 +77,11 @@ module.exports = merge(common, {
       // 压缩JS
       new UglifyJsPlugin({
         uglifyOptions: {
-          drop_console: true, // 去除console.log
-          // compress: {
-          //   warnings: false, // 去除警告
-          //   drop_debugger: true, // 去除debugger
-          //   drop_console: true // 去除console.log
-          // },
+          // drop_console: true, // 去除console.log
+          compress: {
+            drop_debugger: true, // 去除debugger
+            drop_console: true // 去除console.log
+          },
           cache: true, // 开启缓存
           parallel: true, // 平行压缩
           ie8: true,
