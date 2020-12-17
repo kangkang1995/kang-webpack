@@ -13,7 +13,7 @@
 11. 支持多入口和单入口
 12. 懒加载（待处理）
 13. Alise (待处理，ts时，区分打包时的环境变量)
-
+14. 多入口 过滤
 
 具体文档可以查看我的[有道云] （http://note.youdao.com/noteshare?id=64a7b588ba2d3b7d98ee837b66ac3ca7&sub=5B9440D25CCC4C609EDDB40DEFFE9C9C）
 
