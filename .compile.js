@@ -23,6 +23,8 @@ module.exports = {
         },
     },
     server: {
+        // 只打包编译的目录
+        workPage:[],
         alias: {
             "@": path.resolve(__dirname, "src"),
             env: path.resolve(__dirname, "env/beta.js"),

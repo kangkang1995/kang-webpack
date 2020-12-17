@@ -6,8 +6,10 @@ const webpack = require("webpack");
 const ReactRefreshPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const ForkTsCheckerNotifierWebpackPlugin = require("fork-ts-checker-notifier-webpack-plugin");
+const entry = require("../utils/server-entry");
 
 module.exports = merge(common, {
+  entry,
   devtool: "inline-source-map", //追踪到错误和警告在源代码中的原始位置
   module: {
     rules: [

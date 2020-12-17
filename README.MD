@@ -13,7 +13,7 @@
 11. 支持多入口和单入口
 12. 懒加载（待处理）
 13. Alise (待处理，ts时，区分打包时的环境变量)
-14. 多入口 过滤
+14. 多入口 过滤 (只针对start服务时，原因是防止忘记关闭，导致build忘记打包)
 
 具体文档可以查看我的[有道云] （http://note.youdao.com/noteshare?id=64a7b588ba2d3b7d98ee837b66ac3ca7&sub=5B9440D25CCC4C609EDDB40DEFFE9C9C）
 
@@ -94,7 +94,17 @@ customCopyPlugin: [
     }
 ```
 
-5. server 就是启动服务时会使用的
+5. server 就是启动服务时会使用的相关配置
+
+* alias别名
+* workPage 工作的文件夹
+```JavaScript
+// 这个workPage 如果用的好，可以提升工作效率，
+// 下面的意思是说，只打包和index 相关的目录及依赖，其它页面不打包处理
+// emm 不知道能不能懂，但是不好讲清楚
+
+workPage:["index"],
+```
 
 
 6. build 就是打包时会使用的

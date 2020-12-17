@@ -7,11 +7,8 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { customCopyPlugin } = require("../.compile");
 //静态资源输出,将src目录下的assets文件夹复制到dist目录下
 const CopyPlugin = require("copy-webpack-plugin");
-const entry = require("../utils/entry");
 
 module.exports = {
-    // entry: './src/modules/index', //入口
-    entry,
     output: {
         path: path.resolve(__dirname, "../dist"), // 输出的路径
         filename: "[name].bundle.js", // 打包后文件

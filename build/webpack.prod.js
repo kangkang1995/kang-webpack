@@ -5,7 +5,10 @@ const common = require("./webpack.base.js");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 // 分离CSS插件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const entry = require("../utils/build-entry");
+
 module.exports = merge(common, {
+  entry,
   module: {
     rules: [
       {
