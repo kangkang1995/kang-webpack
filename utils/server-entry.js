@@ -9,7 +9,7 @@ function getEntries(globPath) {
     files.forEach(function (filepath) {
         const split = filepath.split("/");
         const name = split[split.length - 2];
-        if (workPage && !workPage.includes(name)) return;
+        if (workPage && workPage.length && !workPage.includes(name)) return;
         entries[name] = [filepath];
     });
     return entries;
