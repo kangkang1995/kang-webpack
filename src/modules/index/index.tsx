@@ -1,15 +1,13 @@
-
-import * as React from 'react';
-import { render } from 'react-dom';
+import * as React from "react";
+import { render } from "react-dom";
 // import { hot } from 'react-hot-loader/root';
-const root = document.getElementById('app');
-import App from "./app";
-import HookTest from "./hookTest";
-const load = () => render((
-    <>
-        {/* <HookTest/> */}
-        <App/>
-    </>
-), root);
-load()
-// hot(load());
+import RouterPage from "./routers";
+const root = document.getElementById("app");
+const load = () =>
+    render(
+        <>
+            <RouterPage />
+        </>,
+        root
+    );
+load();
