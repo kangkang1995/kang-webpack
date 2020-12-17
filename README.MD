@@ -6,11 +6,14 @@
 4. json
 5. js/es6等语法
 6. ts
-7. vue
+7. vue (去掉)
 8. react
 9. eslint
 10. 热更新 （不支持class和hook同时存在的热更新）
 11. 支持多入口和单入口
+12. 懒加载（待处理）
+13. Alise (待处理，ts时，区分打包时的环境变量)
+
 
 具体文档可以查看我的[有道云] （http://note.youdao.com/noteshare?id=64a7b588ba2d3b7d98ee837b66ac3ca7&sub=5B9440D25CCC4C609EDDB40DEFFE9C9C）
 
