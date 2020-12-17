@@ -134,13 +134,21 @@ prod: {
 },
 ```
 
-#### 待解决  alias
+#### 待解决  懒加载 和 热更新
 
+React-Hot-Loader is expected to be replaced by React Fast Refresh. Please remove React-Hot-Loader if Fast Refresh is currently supported on your environment.
 
-首先需要调整的地方是tsconfig.json, 因为可以解决掉vscode的报错。通过声明baseurl 和 path 来指出路径规则。
+预计React-Hot-Loader将被React快速刷新取代。如果您的环境当前支持快速刷新，请删除React-Hot-Loader。
 
-其次就是webpack.config.js , 需要能通过编译打包，就必须也在webpack 的 resolve.alias 中声明。
+所以我还是准备用 react-refresh
 
-最后就是使用eslint。 通过eslint-import-resolver-webpack插件来读取webpack中的设置。这样就解决eslint 报错的问题。
+> 现在方案是写2套
 
-本文只针对以上的条件，其他loader 或者 eslint 配置 需要另外考虑。网上已有很多教程。
+开发时用热更新
+
+打包时放在服务上用懒加载
+
+```
+import Test from "./test";
+// const Test = loadable(() => import('./test'));
+```
