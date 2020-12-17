@@ -9,6 +9,11 @@ const entry = require("../utils/build-entry");
 
 module.exports = merge(common, {
   entry,
+  output: {
+    filename: "./js/[name].[contenthash].js", //contenthash 若文件内容无变化，则contenthash 名称不变
+    path: path.resolve(__dirname, "../dist"),
+  },
+  mode: "production",
   module: {
     rules: [
       {
@@ -40,12 +45,6 @@ module.exports = merge(common, {
         ],
       },
     ],
-  },
-  plugins: [],
-  mode: "production",
-  output: {
-    filename: "./js/[name].[contenthash].js", //contenthash 若文件内容无变化，则contenthash 名称不变
-    path: path.resolve(__dirname, "../dist"),
   },
   optimization: {
     splitChunks: {

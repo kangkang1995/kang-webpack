@@ -30,7 +30,6 @@ module.exports = {
                             cacheDirectory: true,
                         },
                     },
-                    // ...lazy
                 ],
                 exclude: /node_modules/,
             },
@@ -42,7 +41,6 @@ module.exports = {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
                     "style-loader",
-                    // MiniCssExtractPlugin.loader,
                     "css-loader",
                     "postcss-loader",
                     "sass-loader",
@@ -52,7 +50,6 @@ module.exports = {
                 test: /\.less$/,
                 use: [
                     "style-loader",
-                    // MiniCssExtractPlugin.loader,
                     "css-loader",
                     "postcss-loader",
                     "less-loader",
