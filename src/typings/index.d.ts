@@ -16,3 +16,4 @@ declare module "*.doc";
 
 // 其它
 declare module 'env';
+declare module '@loadable/component';
