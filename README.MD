@@ -11,7 +11,7 @@
 9. eslint
 10. 热更新 （不支持class和hook同时存在的热更新）
 11. 支持多入口和单入口
-12. 懒加载 （这个懒加载目前还是有些问题，导致不支持热更新）
+12. 懒加载 
 13. alias (区分打包时的环境变量及一些别名)
 14. 多入口 过滤 (只针对start服务时，原因是防止忘记关闭，导致build忘记打包)
 
@@ -134,21 +134,4 @@ prod: {
 },
 ```
 
-#### 待解决  懒加载 和 热更新
-
-React-Hot-Loader is expected to be replaced by React Fast Refresh. Please remove React-Hot-Loader if Fast Refresh is currently supported on your environment.
-
-预计React-Hot-Loader将被React快速刷新取代。如果您的环境当前支持快速刷新，请删除React-Hot-Loader。
-
-所以我还是准备用 react-refresh
-
-> 现在方案是写2套
-
-开发时用热更新
-
-打包时放在服务上用懒加载
-
-```
-import Test from "./test";
-// const Test = loadable(() => import('./test'));
-```
+#### 待解决 

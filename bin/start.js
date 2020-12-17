@@ -9,7 +9,7 @@ module.exports = (args) => {
   Object.values(webpackConfig.entry).map((item) => {
     item.push(`webpack-dev-server/client?http://localhost:${port}/`);
     item.push(`webpack/hot/only-dev-server`);
-    item.push(`react-hot-loader/patch`);
+    // item.push(`react-hot-loader/patch`);
   });
   
   Object.keys(webpackConfig.entry).map((name) => {
