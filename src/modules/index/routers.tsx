@@ -1,15 +1,15 @@
 import React from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import loadable from '@loadable/component'
-// import App from "./app";
-// import HookTest from "./hookTest";
-// import Test from "./test";
+import App from "./app";
+import HookTest from "./hookTest";
+import Test from "./test";
 
-const App = loadable(() => import('./app'));
+// const App = loadable(() => import('./app'));
 
-const HookTest = loadable(() => import('./hookTest'));
+// const HookTest = loadable(() => import('./hookTest'));
 
-const Test = loadable(() => import('./test'));
+// const Test = loadable(() => import('./test'));
 
 const RouterPage = () => {
     return (

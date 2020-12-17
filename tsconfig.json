@@ -10,8 +10,7 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "paths": {
-      "@/*": ["src/*"],
-      "lazy!*": ["src/modules/index/*"],
+      "@/*": ["src/*"]
     }
   },
   "include":["src"],

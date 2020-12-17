@@ -27,26 +27,26 @@ module.exports = {
         workPage:[],
         alias: {
             "@": path.resolve(__dirname, "src"),
-            env: path.resolve(__dirname, "env/beta.js"),
+            env: path.resolve(__dirname, "env/beta.ts"),
         },
     },
     build: {
         beta: {
             alias: {
                 "@": path.resolve(__dirname, "src"),
-                env: path.resolve(__dirname, "env/beta.js"),
+                env: path.resolve(__dirname, "env/beta.ts"),
             },
         },
         image: {
             alias: {
                 "@": path.resolve(__dirname, "src"),
-                env: path.resolve(__dirname, "env/image.js"),
+                env: path.resolve(__dirname, "env/image.ts"),
             },
         },
         prod: {
             alias: {
                 "@": path.resolve(__dirname, "src"),
-                env: path.resolve(__dirname, "env/prod.js"),
+                env: path.resolve(__dirname, "env/prod.ts"),
             },
         },
     },

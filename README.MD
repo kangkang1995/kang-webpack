@@ -6,13 +6,13 @@
 4. json
 5. js/es6等语法
 6. ts
-7. vue (去掉)
+7. vue (准备去掉)
 8. react
 9. eslint
 10. 热更新 （不支持class和hook同时存在的热更新）
 11. 支持多入口和单入口
-12. 懒加载
-13. Alise (待处理，ts时，区分打包时的环境变量)
+12. 懒加载 （这个懒加载目前还是有些问题，导致不支持热更新）
+13. alias (区分打包时的环境变量及一些别名)
 14. 多入口 过滤 (只针对start服务时，原因是防止忘记关闭，导致build忘记打包)
 
 具体文档可以查看我的[有道云] （http://note.youdao.com/noteshare?id=64a7b588ba2d3b7d98ee837b66ac3ca7&sub=5B9440D25CCC4C609EDDB40DEFFE9C9C）
