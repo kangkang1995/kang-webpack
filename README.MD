@@ -15,6 +15,7 @@
 13. alias (区分打包时的环境变量及一些别名)
 14. 多入口 过滤 (只针对start服务时，原因是防止忘记关闭，导致build忘记打包)
 
+
 具体文档可以查看我的[有道云] （http://note.youdao.com/noteshare?id=64a7b588ba2d3b7d98ee837b66ac3ca7&sub=5B9440D25CCC4C609EDDB40DEFFE9C9C）
 
 ---
@@ -187,6 +188,7 @@ npm run build prod  //build后面随意
 
 和 @luban/devenv 一起集成
 
+性能优化 https://juejin.cn/post/6844904071736852487
 
 ## 备注
 
