@@ -20,9 +20,9 @@
 ---
 待完善中
 
-### 常见错误
+## 常见错误
 
-#### 1.image-webpack-loader  一般出现单词类似 图片的这种报错，就重新这样装一下
+#### 1. image-webpack-loader  一般出现单词类似 图片的这种报错，就重新这样装一下
 
 需要用 cnpm 装
 
@@ -32,11 +32,13 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 cnpm i image-webpack-loader
 ```
 
-#### .prettierrc 
+#### 2. 如果是多页面
+> 新建的多页面，记得重启服务
 
-> 暂不启用
+#### 3. .compile.js的更改
+> 更改完 需要重启服务
 
-### 自定义功能
+## 自定义功能
 
 > 目前 支持 .eslintrc，tsconfig，.babelrc的自定义
 
@@ -134,7 +136,29 @@ prod: {
 },
 ```
 
-#### 启动
+### 启动
+```
+npm run start  //默认 8282
+
+//可以这样
+npm run start 8585  //后面端口随意
+```
+
+### 打包 
+```
+npm run build  //默认 beta
+
+//可以这样
+npm run build prod  //build后面随意
+```
+
+## 待解决 
+
+和 @luban/devenv 一起集成
 
 
-#### 待解决 
+## 备注
+
+#### .prettierrc 
+
+> 暂不启用
