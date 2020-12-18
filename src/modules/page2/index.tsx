@@ -7,6 +7,9 @@ const load = () =>
             <div>
                 1111111111
             </div>
+            <div>
+                2333
+            </div>
         </>,
         root
     );
