@@ -4,13 +4,14 @@ const path = require("path");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const { customCopyPlugin } = require("../.compile");
+const {rootUrl} = require("../utils/global");
+const { customCopyPlugin } = require(`${rootUrl}/.compile`);
 //静态资源输出,将src目录下的assets文件夹复制到dist目录下
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     output: {
-        path: path.resolve(__dirname, "../dist"), // 输出的路径
+        path: path.resolve(__dirname, `${rootUrl}/dist`), // 输出的路径
         filename: "[name].bundle.js", // 打包后文件
     },
     module: {
@@ -130,12 +131,8 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {
-                    from: path.resolve(__dirname, "../static"),
-                    to: path.resolve(__dirname, "../dist"),
-                },
-                {
-                    from: path.resolve(__dirname, "../public"),
-                    to: path.resolve(__dirname, "../dist"),
+                    from: path.resolve(__dirname,`${rootUrl}/static`),
+                    to: path.resolve(__dirname,`${rootUrl}/dist`),
                 },
                 ...customCopyPlugin,
             ],

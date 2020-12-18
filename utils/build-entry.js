@@ -1,7 +1,7 @@
 const path = require("path");
 const glob = require("glob");
 const { customEntry } = require("../.compile");
-
+const {rootUrl} = require("../utils/global");
 function getEntries(globPath) {
     const files = glob.sync(globPath),
         entries = {};
@@ -14,5 +14,5 @@ function getEntries(globPath) {
 }
 
 // 增加自定义入口文件
-const newEntry = customEntry ? customEntry : path.resolve(__dirname, "../src/modules/*/index.tsx");
+const newEntry = customEntry ? customEntry : path.resolve(__dirname, `${rootUrl}/src/modules/*/index.tsx`);
 module.exports = getEntries(newEntry);

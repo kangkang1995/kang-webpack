@@ -9,7 +9,7 @@
 7. vue (准备去掉)
 8. react
 9. eslint
-10. 热更新 （不支持class和hook同时存在的热更新）
+10. 热更新
 11. 支持多入口和单入口
 12. 懒加载 
 13. alias (区分打包时的环境变量及一些别名)
@@ -117,21 +117,24 @@ workPage:["index"],
 beta: {
     alias: {
         "@": path.resolve(__dirname, "src"),
-        env: path.resolve(__dirname, "env/beta.js"),
+        env: path.resolve(__dirname, "env/beta.ts"),
     },
 },
 image: {
     alias: {
         "@": path.resolve(__dirname, "src"),
-        env: path.resolve(__dirname, "env/image.js"),
+        env: path.resolve(__dirname, "env/image.ts"),
     },
 },
 prod: {
     alias: {
         "@": path.resolve(__dirname, "src"),
-        env: path.resolve(__dirname, "env/prod.js"),
+        env: path.resolve(__dirname, "env/prod.ts"),
     },
 },
 ```
+
+#### 启动
+
 
 #### 待解决 

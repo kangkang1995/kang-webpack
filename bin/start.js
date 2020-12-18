@@ -3,7 +3,8 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 let webpackConfig = require("../build/webpack.dev.js");
-const { server: serverConfig, htmlChunk, favicon } = require("../.compile");
+const {rootUrl} = require("../utils/global");
+const { server: serverConfig, htmlChunk, favicon } = require(`${rootUrl}/.compile`);
 module.exports = (args) => {
     const { port } = args;
     Object.values(webpackConfig.entry).map((item) => {
@@ -52,11 +53,12 @@ module.exports = (args) => {
     let alias = serverConfig.alias;
     if (alias) webpackConfig.resolve.alias = alias;
     let server = new WebpackDevServer(webpack(webpackConfig), {
-        contentBase: "../dist",
+        // contentBase: "../dist",
+        contentBase: `${port}/dist}`,
         hot: true,
         inline: true,
         compress: true, //一切服务都启用gzip 压缩：
-        // open: true, // 自动打开浏览器
+        open: true, // 自动打开浏览器
         // stats: 'errors-only',
         // proxy:{} //代理，解决跨域
     });

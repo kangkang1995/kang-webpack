@@ -5,13 +5,14 @@ const common = require("./webpack.base.js");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 // 分离CSS插件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const {rootUrl} = require("../utils/global");
 const entry = require("../utils/build-entry");
 
 module.exports = merge(common, {
   entry,
   output: {
     filename: "./js/[name].[contenthash].js", //contenthash 若文件内容无变化，则contenthash 名称不变
-    path: path.resolve(__dirname, "../dist"),
+    path: path.resolve(__dirname, `${rootUrl}/dist`),
   },
   mode: "production",
   module: {
@@ -22,7 +23,8 @@ module.exports = merge(common, {
           {
             loader:MiniCssExtractPlugin.loader,
             options:{
-              publicPath:'../',
+              // publicPath:'../',
+              publicPath:`${rootUrl}/`,
             }
           },
           'css-loader',
@@ -36,7 +38,7 @@ module.exports = merge(common, {
           {
             loader:MiniCssExtractPlugin.loader,
             options:{
-              publicPath:'../',
+              publicPath:`${rootUrl}/`,
             }
           },
           'css-loader',

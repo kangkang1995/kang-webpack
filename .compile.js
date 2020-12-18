@@ -5,7 +5,12 @@ module.exports = {
     // 自定义 入口文件
     customEntry: "",
     // 拷贝文件，已经有static和 public了
-    customCopyPlugin: [],
+    customCopyPlugin: [
+        {
+            from: path.resolve(__dirname, "./public"),
+            to: path.resolve(__dirname, "./dist"),
+        },
+    ],
     htmlChunk: {
         $all: {
             title: "huaxiang",
@@ -15,7 +20,7 @@ module.exports = {
                 `<meta name="format-detection" content="email=no">`,
                 `<meta name="format-detection" content="telephone=no">`,
             ],
-            scriptChunk:[],
+            scriptChunk: [],
         },
         index: {
             title: "huaxiang-index",
@@ -24,7 +29,7 @@ module.exports = {
     },
     server: {
         // 只打包编译的目录
-        workPage:[],
+        workPage: [],
         alias: {
             "@": path.resolve(__dirname, "src"),
             env: path.resolve(__dirname, "env/beta.ts"),

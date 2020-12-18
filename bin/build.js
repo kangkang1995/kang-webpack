@@ -2,7 +2,8 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpackConfig = require("../build/webpack.prod.js");
-const { build: buildConfig, htmlChunk, favicon } = require("../.compile");
+const {rootUrl} = require("../utils/global");
+const { build: buildConfig, htmlChunk, favicon } = require(`${rootUrl}/.compile`);
 module.exports = (args) => {
     let config = buildConfig[args.type];
     if (config) {
