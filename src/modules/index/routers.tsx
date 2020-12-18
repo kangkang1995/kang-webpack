@@ -1,11 +1,11 @@
 import React from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import loadable from '@loadable/component'
-// import App from "./app";
+import App from "~/modules/index/app";
 // import HookTest from "./hookTest";
 // import Test from "./test";
 
-const App = loadable(() => import('./app'));
+// const App = loadable(() => import('@/modules/index/app'));
 
 const HookTest = loadable(() => import('./hookTest'));
 

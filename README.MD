@@ -38,6 +38,37 @@ cnpm i image-webpack-loader
 #### 3. .compile.js的更改
 > 更改完 需要重启服务
 
+#### 4. 找不到模块“@/modules/index/app”或其相应的类型声明。
+
+4.1 如果是第三方的，可以看有没有对应的@types/ 包可以安装
+如果没有就在 typings下类似这样
+```javascript
+    declare module '@loadable/component';
+```
+
+4.2 如果是自己的
+注意看看是不是 tsconfig.json配置有问题
+
+主要注意 
+
+```javascript
+// tsconfig.json的baseUrl和paths
+
+"baseUrl": ".",
+"paths": {
+    "~*": ["src/*"],
+    "@*": ["src/*"]
+}
+
+// 然后 是webpack的 alia
+"@": path.resolve(__dirname, "src"),
+"~": path.resolve(__dirname, "src"),
+
+
+
+```
+
+
 ## 自定义功能
 
 > 目前 支持 .eslintrc，tsconfig，.babelrc的自定义

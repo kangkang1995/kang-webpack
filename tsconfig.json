@@ -5,12 +5,13 @@
     "jsx": "react",
     "lib": ["dom", "es6", "es2015.promise", "es2017"],
     "sourceMap": true,
-    "baseUrl": "/",
-    "outDir": "./dist/",
     "esModuleInterop": true,
     "moduleResolution": "node",
+    "types": ["node"],
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "~*": ["src/*"],
+      "@*": ["src/*"]
     }
   },
   "include":["src"],

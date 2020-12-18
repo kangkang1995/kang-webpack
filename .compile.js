@@ -32,6 +32,7 @@ module.exports = {
         workPage: [],
         alias: {
             "@": path.resolve(__dirname, "src"),
+            "~": path.resolve(__dirname, "src"),
             env: path.resolve(__dirname, "env/beta.ts"),
         },
     },
