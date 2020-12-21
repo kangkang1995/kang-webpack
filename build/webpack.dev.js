@@ -7,16 +7,28 @@ const ReactRefreshPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const ForkTsCheckerNotifierWebpackPlugin = require("fork-ts-checker-notifier-webpack-plugin");
 const entry = require("../utils/server-entry");
+const { rootUrl } = require("../utils/global");
+const { isSpeedMeasurePlugin } = require(`${rootUrl}/.compile`);
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const smp = new SpeedMeasurePlugin();
 
-module.exports = merge(common, {
+const HappyPack = require("happypack");
+const os = require("os");
+// 开辟一个线程池
+// 拿到系统CPU的最大核数，happypack 将编译工作灌满所有线程
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
+
+const devWebpackConfig = merge(common, {
     entry,
     mode: "development",
-    devtool: "inline-source-map", //追踪到错误和警告在源代码中的原始位置
+    // devtool: "inline-source-map", //追踪到错误和警告在源代码中的原始位置
+    devtool: "cheap-module-eval-source-map",
     module: {
         rules: [
             {
                 test: /\.(js|jsx|tsx|ts)$/,
                 use: [
+                    // 'happypack/loader?id=js',
                     {
                         loader: "babel-loader",
                         options: {
@@ -24,7 +36,6 @@ module.exports = merge(common, {
                             plugins: [require.resolve("react-refresh/babel")],
                         },
                     },
-                    // ...lazy
                 ],
                 exclude: /node_modules/,
             },
@@ -74,6 +85,19 @@ module.exports = merge(common, {
         new webpack.HotModuleReplacementPlugin(),
         // 插件的作用是在热加载时直接返回更新文件名，而不是文件的id
         new webpack.NamedModulesPlugin(),
+        // new HappyPack({
+        //     id: 'js',
+        //     threadPool: happyThreadPool,
+        //     loaders: [
+        //         {
+        //             loader: 'babel-loader',
+        //             options: {
+        //                 cacheDirectory: true,
+        //                 plugins: [require.resolve("react-refresh/babel")],
+        //             },
+        //         },
+        //     ],
+        // }),
         // 官方热更新
         new ReactRefreshPlugin(),
         new ForkTsCheckerWebpackPlugin({
@@ -89,13 +113,6 @@ module.exports = merge(common, {
         //   skipSuccessful: true,
         // }),
     ],
-    // devServer: {
-    //   contentBase: '../dist',
-    //   host: '0.0.0.0',      // 默认是localhost
-    //   port: 3000,             // 端口
-    //   open: true,             // 自动打开浏览器
-    //   compress: true,         //压缩
-    //   hot: true,               // 开启热更新
-    //   // proxy:{} //代理，解决跨域
-    // },
 });
+
+module.exports = isSpeedMeasurePlugin?smp.wrap(devWebpackConfig):devWebpackConfig;

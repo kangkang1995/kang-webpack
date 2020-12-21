@@ -15,7 +15,6 @@
 13. alias (区分打包时的环境变量及一些别名)
 14. 多入口 过滤 (只针对start服务时，原因是防止忘记关闭，导致build忘记打包)
 
-
 具体文档可以查看我的[有道云] （http://note.youdao.com/noteshare?id=64a7b588ba2d3b7d98ee837b66ac3ca7&sub=5B9440D25CCC4C609EDDB40DEFFE9C9C）
 
 ---
@@ -38,37 +37,6 @@ cnpm i image-webpack-loader
 
 #### 3. .compile.js的更改
 > 更改完 需要重启服务
-
-#### 4. 找不到模块“@/modules/index/app”或其相应的类型声明。
-
-4.1 如果是第三方的，可以看有没有对应的@types/ 包可以安装
-如果没有就在 typings下类似这样
-```javascript
-    declare module '@loadable/component';
-```
-
-4.2 如果是自己的
-注意看看是不是 tsconfig.json配置有问题
-
-主要注意 
-
-```javascript
-// tsconfig.json的baseUrl和paths
-
-"baseUrl": ".",
-"paths": {
-    "~*": ["src/*"],
-    "@*": ["src/*"]
-}
-
-// 然后 是webpack的 alia
-"@": path.resolve(__dirname, "src"),
-"~": path.resolve(__dirname, "src"),
-
-
-
-```
-
 
 ## 自定义功能
 
@@ -168,6 +136,19 @@ prod: {
 },
 ```
 
+7. 是否启动图片压缩
+```javascript
+// 默认不启动 false
+isImageCompression:false,
+
+```
+
+8. 是否启动 start 性能调试
+```javascript
+// 默认不启动 false
+isSpeedMeasurePlugin:false,
+```
+
 ### 启动
 ```
 npm run start  //默认 8282
@@ -188,10 +169,16 @@ npm run build prod  //build后面随意
 
 和 @luban/devenv 一起集成
 
-性能优化 https://juejin.cn/post/6844904071736852487
 
 ## 备注
 
 #### .prettierrc 
 
 > 暂不启用
+
+#### 默认隐藏 "image-webpack-loader": "^7.0.1",
+> 指挥中心 加入这个插件，打包需要300多秒，去掉之后打包 30多秒............
+
+#### 暂时未启动 HappyPack
+
+> 效果不明显......，反而还慢了

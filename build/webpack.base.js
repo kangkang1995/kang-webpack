@@ -1,11 +1,11 @@
 // 存放 dev 和 prod 通用配置
 const webpack = require("webpack");
 const path = require("path");
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
+// const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const {rootUrl} = require("../utils/global");
-const { customCopyPlugin } = require(`${rootUrl}/.compile`);
+const { rootUrl } = require("../utils/global");
+const { customCopyPlugin,isImageCompression } = require(`${rootUrl}/.compile`);
 //静态资源输出,将src目录下的assets文件夹复制到dist目录下
 const CopyPlugin = require("copy-webpack-plugin");
 
@@ -40,21 +40,11 @@ module.exports = {
             },
             {
                 test: /\.(sa|sc|c)ss$/,
-                use: [
-                    "style-loader",
-                    "css-loader",
-                    "postcss-loader",
-                    "sass-loader",
-                ],
+                use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
             },
             {
                 test: /\.less$/,
-                use: [
-                    "style-loader",
-                    "css-loader",
-                    "postcss-loader",
-                    "less-loader",
-                ],
+                use: ["style-loader", "css-loader", "postcss-loader", "less-loader"],
             },
             {
                 test: /\.(png|svg|jpe?g|gif)$/,
@@ -69,6 +59,7 @@ module.exports = {
                             // publicPath:"./dist/assets/images"
                         },
                     },
+                    isImageCompression?
                     {
                         loader: "image-webpack-loader",
                         options: {
@@ -91,7 +82,7 @@ module.exports = {
                                 quality: 75,
                             },
                         },
-                    },
+                    }:{},
                 ],
             },
             {
@@ -126,13 +117,13 @@ module.exports = {
         new CleanWebpackPlugin(),
         // 解决vender后面的hash每次都改变
         new webpack.HashedModuleIdsPlugin(),
-        new VueLoaderPlugin(),
+        // new VueLoaderPlugin(),
         new ProgressBarPlugin(),
         new CopyPlugin({
             patterns: [
                 {
-                    from: path.resolve(__dirname,`${rootUrl}/static`),
-                    to: path.resolve(__dirname,`${rootUrl}/dist`),
+                    from: path.resolve(__dirname, `${rootUrl}/static`),
+                    to: path.resolve(__dirname, `${rootUrl}/dist`),
                 },
                 ...customCopyPlugin,
             ],
@@ -140,6 +131,6 @@ module.exports = {
     ], // 插件
     resolve: {
         // 省略后缀
-        extensions: [".tsx", ".ts", ".js", ".jsx", ".vue", ".css", ".scss", ".less"],
+        extensions: [".tsx", ".ts", ".js", ".jsx", ".d.ts", ".css", ".scss", ".less"],
     },
 };

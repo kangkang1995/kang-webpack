@@ -56,4 +56,8 @@ module.exports = {
             },
         },
     },
+    //是否启动图片压缩
+    isImageCompression:false,
+    // 是否启动 start 性能调试
+    isSpeedMeasurePlugin:false,
 };
