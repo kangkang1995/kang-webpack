@@ -53,8 +53,6 @@ module.exports = (args) => {
     let alias = serverConfig.alias;
     if (alias) webpackConfig.resolve.alias = alias;
     let server = new WebpackDevServer(webpack(webpackConfig), {
-        // contentBase: "../dist",
-        contentBase: `${port}/dist}`,
         hot: true,
         inline: true,
         compress: true, //一切服务都启用gzip 压缩：
