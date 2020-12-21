@@ -7,7 +7,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { rootUrl } = require("../utils/global");
 const entry = require("../utils/build-entry");
 const TerserPlugin = require("terser-webpack-plugin");
-
+const { isBundleAnalyzerPlugin } = require(`${rootUrl}/.compile`);
+// 可视化分析模块
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = merge(common, {
     entry,
     output: {
@@ -90,7 +92,13 @@ module.exports = merge(common, {
             }),
         ],
     },
-    plugins: [
+    plugins: isBundleAnalyzerPlugin?[
+        new MiniCssExtractPlugin({
+            filename: "./css/[name].[hash].css",
+            chunkFilename: "./css/[id].[hash].css",
+        }),
+        new BundleAnalyzerPlugin()
+    ]:[
         new MiniCssExtractPlugin({
             filename: "./css/[name].[hash].css",
             chunkFilename: "./css/[id].[hash].css",

@@ -2,8 +2,10 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpackConfig = require("../build/webpack.prod.js");
+
 const {rootUrl} = require("../utils/global");
-const { build: buildConfig, htmlChunk, favicon } = require(`${rootUrl}/.compile`);
+const { build: buildConfig, htmlChunk, favicon,isBundleAnalyzerPlugin } = require(`${rootUrl}/.compile`);
+
 module.exports = (args) => {
     let config = buildConfig[args.type];
     if (config) {
@@ -45,6 +47,7 @@ module.exports = (args) => {
                 scriptChunk: htmlConfig.scriptChunk.join("\n"),
             })
         );
+
     });
     webpack(webpackConfig, function (err, stats) {
         process.stdout.write(

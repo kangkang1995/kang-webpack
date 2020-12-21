@@ -149,6 +149,12 @@ isImageCompression:false,
 isSpeedMeasurePlugin:false,
 ```
 
+8. 是否启动 build 性能调试
+```javascript
+// 默认不启动 false
+BundleAnalyzerPlugin:false,
+```
+
 ### 启动
 ```
 npm run start  //默认 8282
