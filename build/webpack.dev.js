@@ -1,7 +1,6 @@
 const merge = require("webpack-merge");
 const common = require("./webpack.base.js");
 const path = require("path");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const webpack = require("webpack");
 const ReactRefreshPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
@@ -68,17 +67,8 @@ const devWebpackConfig = merge(common, {
                 },
             },
         },
-        minimizer: [
-            // 压缩JS
-            new UglifyJsPlugin({
-                uglifyOptions: {
-                    cache: true, // 开启缓存
-                    parallel: true, // 平行压缩
-                    ie8: true,
-                    exclude: /node_modules/,
-                },
-            }),
-        ],
+        minimize: false,
+        
     },
     plugins: [
         // 开启全局的模块热替换(HMR)

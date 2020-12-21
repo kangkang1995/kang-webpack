@@ -2,11 +2,11 @@ const path = require("path");
 // 合并配置文件
 const merge = require("webpack-merge");
 const common = require("./webpack.base.js");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 // 分离CSS插件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { rootUrl } = require("../utils/global");
 const entry = require("../utils/build-entry");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = merge(common, {
     entry,
@@ -74,19 +74,18 @@ module.exports = merge(common, {
                 },
             },
         },
+        minimize: true,
         minimizer: [
-            // 压缩JS
-            new UglifyJsPlugin({
-                uglifyOptions: {
-                    // drop_console: true, // 去除console.log
+            new TerserPlugin({
+                parallel: true, // 开启几个进程来处理压缩，默认是 os.cpus().length - 1
+                cache: true, // 是否缓存
+                sourceMap: false,
+                terserOptions: {
+                    mangle: true, // 混淆，
                     compress: {
-                        drop_debugger: true, // 去除debugger
-                        drop_console: true, // 去除console.log
+                        drop_console: true, //传true就是干掉所有的console.*这些函数的调用.
+                        drop_debugger: true, //干掉那些debugger;
                     },
-                    cache: true, // 开启缓存
-                    parallel: true, // 平行压缩
-                    ie8: true,
-                    exclude: /node_modules/,
                 },
             }),
         ],
