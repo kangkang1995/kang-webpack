@@ -6,6 +6,7 @@ const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 // 分离CSS插件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const {rootUrl, isDev} = require("../utils/global");
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const {customCopyPlugin, isImageCompression} = require(`${rootUrl}/webpack-config.js`);
 //静态资源输出,将src目录下的assets文件夹复制到dist目录下
 const CopyPlugin = require("copy-webpack-plugin");
@@ -155,7 +156,8 @@ module.exports = {
                 },
                 ...customCopyPlugin
             ]
-        })
+        }),
+        new NodePolyfillPlugin(),
     ], // 插件
     resolve: {
         // 省略后缀
