@@ -20,6 +20,7 @@ module.exports = merge(common, {
     },
     mode: "production",
     optimization: {
+        // https://webpack.docschina.org/plugins/split-chunks-plugin/
         // splitChunks: {
         //     chunks: "async", //async异步代码分割 initial同步代码分割 all同步异步分割都开启
         //     minSize: 20000, //字节 引入的文件大于30kb才进行分割
@@ -45,7 +46,7 @@ module.exports = merge(common, {
         //         },
         //     },
         // },
-        // minimize: true,
+        minimize: true,
         minimizer: [
             new TerserPlugin({
                 terserOptions: {
