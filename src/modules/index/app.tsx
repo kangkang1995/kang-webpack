@@ -11,7 +11,7 @@ const App = () => {
         (data: number) => setValue(data + 1)
     }, []);
     return <div>
-        <div>112121211212121421412414</div>
+        <div>1121212112121214214122121221414</div>
         <div onClick={changeValue}>{value}</div>
         <div>
             <img src={banner06} />
