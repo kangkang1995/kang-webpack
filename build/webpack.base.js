@@ -15,9 +15,10 @@ const babelPlugins = [
     "@babel/plugin-proposal-optional-chaining",
     "@babel/plugin-proposal-nullish-coalescing-operator",
     ["@babel/plugin-proposal-decorators", {legacy: true}],
-    "@babel/plugin-transform-react-jsx",
+    // "@babel/plugin-transform-react-jsx",
     ["@babel/plugin-proposal-class-properties"],
     "@babel/plugin-transform-runtime",
+    ['@babel/plugin-transform-modules-commonjs'],
     ["@babel/plugin-transform-typescript", {allowNamespaces: true}],
     ["@babel/plugin-syntax-dynamic-import"]
 ];
@@ -67,7 +68,7 @@ module.exports = {
                             compact: true,
                             // 这个不设置的话，webpack 魔法注释会被删除，魔法注释用于分包
                             comments: true,
-                            plugins: [...babelPlugins, isDev && require.resolve("react-refresh/babel")].filter(Boolean)
+                            plugins: [...babelPlugins, isDev && "react-refresh/babel"].filter(Boolean)
                         }
                     }
                 ],
